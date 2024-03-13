@@ -52,6 +52,11 @@ def predict_note_authentication():
     entropy=request.args.get('entropy')
     prediction=classifier.predict([[variance,skewness,curtosis,entropy]])
     print(prediction)
+    if prediction==0:
+        return 'The predicted value is No'
+    else:
+        return "The predicted value is Yes"
+      
     return 'The predicted value is'+ str(prediction)
 
 
