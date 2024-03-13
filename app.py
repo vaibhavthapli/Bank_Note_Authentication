@@ -20,7 +20,11 @@ def predict_note_authentication():
     curtosis=request.args.get('curtosis')
     entropy=request.args.get('entropy')
     prediction=classifier.predict([[variance,skewness,curtosis,entropy]])
-    return 'The predicted value is'+ str(prediction)
+    if prediction==0:
+        return 'The predicted value is No'
+    else:
+        return "The predicted value is Yes"
+    
 
 
 @app.route('/predict_file',methods=["POST"])
